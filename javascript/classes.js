@@ -194,6 +194,10 @@ console.log('public color getter - ', color.getPublicColor()); // black
 
 // Property '#colorPrivate' is not accessible outside class 'Color' because it has a private identifier.
 // console.log('private color', color.#colorPrivate);
+
+// In TypeScript this would have worked!
+console.log('private color', color["#colorPrivate"]); // undefined
+
 console.log('private color getter - ', color.getPrivateColor()); // blue
 color.setPrivateColor('black');
 console.log('private color getter - ', color.getPrivateColor()); // black
