@@ -25,3 +25,17 @@ You must install `typescript` & `ts-node` before running the TS code snippets.
 # Check typescript version
 % tsc --version
 ```
+
+## First Angular Application
+
+Install latest version of Angular
+
+Run `npm install -g @angular/cli`
+
+Setup default app
+
+https://angular.io/tutorial/first-app/first-app-lesson-01
+
+1. Use correct node version - `nvm use 18`
+2. Install dependencies - `npm install`
+3. Run and build default app - `ng serve`
