@@ -2,6 +2,8 @@
 
 🔗 [Tour of Heroes application and tutorial](https://angular.io/tutorial/tour-of-heroes)
 
+Continue from here: https://angular.io/tutorial/tour-of-heroes/toh-pt1#edit-the-hero
+
 The application has following features:
 
 1. Gets a list of heroes
@@ -30,8 +32,9 @@ ng new angular-tour-of-heroes
   To run the application locally
 
   ```
-  cd tour-of-heroes
-  ng serve --open
+  $ cd tour-of-heroes
+  $ nvm use 18
+  $ ng serve --open
   ```
 
 - Code scaffolding: Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
@@ -43,3 +46,20 @@ ng new angular-tour-of-heroes
 - Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 - To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+### All Angular CLI commands used here
+
+`ng generate component heroes`
+
+## Learnings
+
+Always `export` the component class so you can import it elsewhere … like in the `AppModule`.
+
+The word `uppercase` in the interpolation binding after the pipe `|` character, activates the built-in `UppercasePipe`.
+
+```html
+<!-- heroes.component.html -->
+<h2>{{hero.name | uppercase}} Details</h2>
+```
+
+The hero's name is displayed in capital letters.
