@@ -37,6 +37,7 @@ Topics Covered
 - Angular routing
   - Routing parameters
   - `routerLink` directive to create dynamic links in application
+- Angular forms
 
 Open Questions/Topics
 
@@ -47,3 +48,13 @@ import { CommonModule } from '@angular/common';
 ```
 
 I see it is imported in all components.
+
+Which components go in `imports`?
+
+- `ReactiveFormsModule` from `@angular/forms`
+- `RouterModule` from `@angular/router`
+- `RouterLink` and `RouterOutlet` from `@angular/router`
+
+All these were added in the `imports` of their respective components.
+
+But `FormControl` & `FormGroup` from `@angular/forms` were not added in the `imports`. Why?
