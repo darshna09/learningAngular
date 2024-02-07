@@ -28,14 +28,20 @@ You must install `typescript` & `ts-node` before running the TS code snippets.
 
 ## First Angular Application
 
-Install latest version of Angular
+[First Angular application](first-app/README.md) gets you started with Angular The First App tutorial guides you through building an Angular app by taking you step by step through the fundamentals of building an application in Angular.
 
-Run `npm install -g @angular/cli`
+Learn how to use Standalone Components, Inputs, Angular templates, data binding and more.
 
-Setup default app
+## Tour of Heroes
 
-https://angular.io/tutorial/first-app/first-app-lesson-01
+[Tour of Heroes](tour-of-heroes/README.md) helps you gain confidence that Angular can do whatever you need it to do by showing you how to:
 
-1. Use correct node version - `nvm use 18`
-2. Install dependencies - `npm install`
-3. Run and build default app - `ng serve`
+- Use Angular directives to show and hide elements and display lists of hero data.
+- Create Angular components to display hero details and show an array of heroes.
+- Use one-way data binding for read-only data.
+- Add editable fields to update a model with two-way data binding.
+- Bind component methods to user events, like keystrokes and clicks.
+- Enable users to select a hero from a list and edit that hero in the details view.
+- Format data with pipes.
+- Create a shared service to assemble the heroes.
+- Use routing to navigate among different views and their components.
