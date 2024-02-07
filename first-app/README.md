@@ -14,6 +14,12 @@ Create new Angular interface
 ng generate interface <INTERFACE_NAME>
 ```
 
+Create new Angular service
+
+```
+ng generate service <SERVICE_NAME> --skip-tests
+```
+
 Topics Covered
 
 - Interfaces
@@ -26,6 +32,11 @@ Topics Covered
   }
   ```
 - Property binding
+- `NgFor` builtin structural directive
+- Angular services and dependency injection
+- Angular routing
+  - Routing parameters
+  - `routerLink` directive to create dynamic links in application
 
 Open Questions/Topics
 

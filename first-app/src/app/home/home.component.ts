@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { Housinglocation } from "../housinglocation";
+import { HousingLocation } from "../housinglocation";
+import { HousingService } from "../housing.service";
 import { HousingLocationComponent } from "../housing-location/housing-location.component";
 
 @Component({
@@ -15,6 +16,7 @@ import { HousingLocationComponent } from "../housing-location/housing-location.c
       </form>
       <section class="results">
         <app-housing-location
+          *ngFor="let housingLocation of housingLocationList"
           [housingLocation]="housingLocation"
         ></app-housing-location>
       </section>
@@ -23,15 +25,10 @@ import { HousingLocationComponent } from "../housing-location/housing-location.c
   styleUrl: "./home.component.css",
 })
 export class HomeComponent {
-  readonly baseUrl = "https://angular.io/assets/images/tutorials/faa";
-  housingLocation: Housinglocation = {
-    id: 9999,
-    name: "Bayou on the Bend",
-    city: "Houston",
-    state: "TX",
-    photo: `${this.baseUrl}/example-house.jpg`,
-    availableUnits: 99,
-    wifi: true,
-    laundry: false,
-  };
+  housingLocationList: HousingLocation[] = [];
+  housingService: HousingService = inject(HousingService);
+
+  constructor() {
+    this.housingLocationList = this.housingService.getAllHousingLocations();
+  }
 }
