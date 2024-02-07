@@ -38,6 +38,8 @@ Topics Covered
   - Routing parameters
   - `routerLink` directive to create dynamic links in application
 - Angular forms
+- Template reference variable
+  - Access value of `input` element
 
 Open Questions/Topics
 
