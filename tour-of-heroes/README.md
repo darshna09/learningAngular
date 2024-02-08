@@ -53,7 +53,21 @@ ng new angular-tour-of-heroes
 
 ## Learnings
 
-Always `export` the component class so you can import it elsewhere … like in the `AppModule`.
+- Always `export` the component class so you can import it elsewhere … like in the `AppModule`. -`*ngFor` to display a list.
+- `*ngIf` to conditionally include or exclude a block of HTML.
+- Toggle a CSS style class with a class binding.
+
+### Two-way binding
+
+`[(ngModel)]` is Angular's two-way binding syntax.
+
+Although `ngModel` is a valid Angular directive, it isn't available by default. It belongs to the optional `FormsModule` and you must opt in to using it.
+
+> Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires. This information is called _metadata_. Some of the metadata is in the `@Component` decorators that you added to your component classes. Other critical metadata is in `@NgModule` decorators. The most important `@NgModule` decorator annotates the top-level `AppModule` class. `ng new` created an `AppModule` class in `src/app/app.module.ts` when it created the project. This is where you opt in to the `FormsModule`.
+
+The above is not the case for standalone applications. In case of Standalone application import `FormsModule` in the desired component.
+
+### Using pipe
 
 The word `uppercase` in the interpolation binding after the pipe `|` character, activates the built-in `UppercasePipe`.
 
