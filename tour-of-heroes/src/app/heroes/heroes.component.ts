@@ -3,24 +3,26 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HeroService } from '../hero.service';
 import { CommonModule } from '@angular/common';
-import { MessageService } from '../message.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeroDetailComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HeroDetailComponent,
+    RouterLink,
+    RouterOutlet,
+  ],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css',
 })
 export class HeroesComponent {
   heroes: Hero[] = [];
-  selectedHero?: Hero;
 
-  constructor(
-    private heroService: HeroService,
-    private messageService: MessageService
-  ) {}
+  constructor(private heroService: HeroService) {}
 
   // Called after constructing the component instance
   ngOnInit() {
@@ -29,10 +31,5 @@ export class HeroesComponent {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`Hero component: Selected hero id: ${hero.id}`);
   }
 }

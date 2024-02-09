@@ -123,6 +123,24 @@ For standalone applications:
 2. In `app.component.ts` import `RouteModule` from `@angular/router` and add in component imports.
 3. Add `<router-outlet>` in `app.component.html` with `nav` items. The `<router-outlet>` tells the router where to display routed views.
 4. Update the routes in `app.routes.ts` file.
+5. For using route params like `id`
+6. Import `RouterLink` & `RouterOutlet` from `@angular/router` and add them to the component `imports`
+7. The link which enables route, use `routerLink` attribute and pass the route path and `id`
+8. In the routed component read the route using `ActivatedRoute` route Angular API
+
+```html
+<div class="heroes-menu">
+  <a *ngFor="let hero of heroes" [routerLink]="['/detail', hero.id]">{{ hero.name }}</a>
+</div>
+```
+
+```js
+//...In export class
+route: ActivatedRoute = inject(ActivatedRoute);
+
+//...Reading the URL param
+const id = Number(this.route.snapshot.params["id"]);
+```
 
 ## Further Learnings
 
