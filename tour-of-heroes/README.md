@@ -49,23 +49,32 @@ ng new angular-tour-of-heroes
 
 ### All Angular CLI commands used here
 
-`ng generate component heroes`
+- `ng generate component heroes`
+- `ng generate interface hero`
+- `ng generate component hero-detail`
+- `ng generate service hero`
+- `ng generate component messages`
+- `ng generate service message`
 
 ## Learnings
 
 - Always `export` the component class so you can import it elsewhere … like in the `AppModule`. -`*ngFor` to display a list.
 - `*ngIf` to conditionally include or exclude a block of HTML.
 - Toggle a CSS style class with a class binding.
+- Service-in-service scenario: Importing `messages.service` in `hero.service` which is typical scenario in development.
+- Angular only binds to **public** component properties. Properties which are public get bound in the template.
 
 ### Two-way binding
 
-`[(ngModel)]` is Angular's two-way binding syntax.
+- `[(ngModel)]` is Angular's two-way binding syntax.
 
-Although `ngModel` is a valid Angular directive, it isn't available by default. It belongs to the optional `FormsModule` and you must opt in to using it.
+  - Although `ngModel` is a valid Angular directive, it isn't available by default. It belongs to the optional `FormsModule` and you must opt in to using it.
 
-> Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires. This information is called _metadata_. Some of the metadata is in the `@Component` decorators that you added to your component classes. Other critical metadata is in `@NgModule` decorators. The most important `@NgModule` decorator annotates the top-level `AppModule` class. `ng new` created an `AppModule` class in `src/app/app.module.ts` when it created the project. This is where you opt in to the `FormsModule`.
+  > Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires. This information is called _metadata_. Some of the metadata is in the `@Component` decorators that you added to your component classes. Other critical metadata is in `@NgModule` decorators. The most important `@NgModule` decorator annotates the top-level `AppModule` class. `ng new` created an `AppModule` class in `src/app/app.module.ts` when it created the project. This is where you opt in to the `FormsModule`.
 
-The above is not the case for standalone applications. In case of Standalone application import `FormsModule` in the desired component.
+  - The above is not the case for standalone applications. In case of Standalone application import `FormsModule` in the desired component.
+
+- The `@Input` decorator to make the hero property available for binding by the external components.
 
 ### Using pipe
 
@@ -77,3 +86,42 @@ The word `uppercase` in the interpolation binding after the pipe `|` character, 
 ```
 
 The hero's name is displayed in capital letters.
+
+### Angular Services
+
+- Components shouldn't fetch or save data directly, and they certainly shouldn't knowingly present fake data.
+- They should focus on presenting data and delegate data access to a service.
+- Services are a great way to share information among classes that don't know each other.
+- Use the dependency injection that Angular supports to inject it into the Angular component constructor.
+
+### Lifecycle hooks
+
+Reserve the constructor for minimal initialization such as wiring constructor parameters to properties. The constructor shouldn't do anything. It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
+
+### Asynchronous Signature
+
+In real development code base, we will do API integration which will require asynchronous signature.
+
+When we used mock data for `Heroes` we fetched the data from `hero.service` using `this.heroes = this.heroService.getHeroes()` which is a synchronous signature. We need to make the `HeroService.getHeroes()` must have asynchronous signature.
+
+Angular's `HttpClient` method returns observable from RxJS library.
+
+- Observable for fetching data asynchronously
+- Subscribe for passes the emitted data to callback
+
+### Routing/Navigation
+
+For not standalone applications:
+
+- In Angular, the best practice is to load and configure the router in a separate, top-level module. The router is dedicated to routing and imported by the root `AppModule`.
+- By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` directory.
+
+For standalone applications:
+
+## Further Learnings
+
+[RxJS](https://rxjs.dev/guide/overview)
+
+- RxJS is a library for composing asynchronous and event-based programs by using observable sequences
+- ReactiveX combines the Observer pattern with the Iterator pattern and functional programming with collections to fill the need for an ideal way of managing sequences of events
+- Observable: represents the idea of an invokable collection of future values or events.
