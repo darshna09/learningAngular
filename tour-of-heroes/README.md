@@ -55,6 +55,7 @@ ng new angular-tour-of-heroes
 - `ng generate service hero`
 - `ng generate component messages`
 - `ng generate service message`
+- `ng generate component dashboard`
 
 ## Learnings
 
@@ -117,6 +118,11 @@ For not standalone applications:
 - By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` directory.
 
 For standalone applications:
+
+1. With `ng new` the router setup is default.
+2. In `app.component.ts` import `RouteModule` from `@angular/router` and add in component imports.
+3. Add `<router-outlet>` in `app.component.html` with `nav` items. The `<router-outlet>` tells the router where to display routed views.
+4. Update the routes in `app.routes.ts` file.
 
 ## Further Learnings
 
