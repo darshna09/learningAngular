@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -65,17 +65,14 @@ export class HeroService {
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) return of([]);
 
-    return this.http
-      .get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
-      .pipe(
-        tap(
-          (x) =>
-            x.length
-              ? this.log(`found heroes matching ${term}`)
-              : this.log(`no heroes matching ${term}`),
-          catchError(this.handleError<Hero[]>('searchHeroes', []))
-        )
-      );
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap((x) =>
+        x.length
+          ? this.log(`found heroes matching ${term}`)
+          : this.log(`no heroes matching ${term}`)
+      ),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

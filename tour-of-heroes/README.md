@@ -2,84 +2,77 @@
 
 🔗 [Tour of Heroes application and tutorial](https://angular.io/tutorial/tour-of-heroes)
 
-Continue from here: https://angular.io/tutorial/tour-of-heroes/toh-pt1#edit-the-hero
-
 The application has following features:
 
-1. Gets a list of heroes
-2. Displays the heroes in a list
-3. Edits a selected hero's details
-4. Navigates between different views of heroic data
+1. Setting up local API server using Angular `in-memory-web-api` to server list of heroes
+2. There are following components:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+- Dashboard
+  - Nav items to switch Heroes component
+  - 5 heros (spliced from heroes list)
+  - Search heroes
+  - Show log messages
+- Heroes
+  - List of heroes
+  - Add a new hero
+  - Delete a hero
+  - Show log messages
+- Heroes Details
+  - Displays about the hero
+  - This can be accessed from across the application
+- Hero search:
+  - Search box with list of searched items
 
-```
-ng new angular-tour-of-heroes
-```
+> This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
 
 ## Development Setup
 
-- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the application locally
 
-  The ng serve command:
+```
+$ cd tour-of-heroes
+$ nvm use 18
+$ ng serve --open
+```
 
-  - Builds the application
-  - Starts the development server
-  - Watches the source files
-  - Rebuilds the application as you make changes
-  - The `--open` flag opens a browser to http://localhost:4200.
+The application will automatically reload if you change any of the source files.
 
-  To run the application locally
+The `ng serve` command:
 
-  ```
-  $ cd tour-of-heroes
-  $ nvm use 18
-  $ ng serve --open
-  ```
-
-- Code scaffolding: Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-- Run `ng test` to execute the unit tests via `Karma`.
-
-- Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-- To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-### All Angular CLI commands used here
-
-- `ng generate component heroes`
-- `ng generate interface hero`
-- `ng generate component hero-detail`
-- `ng generate service hero`
-- `ng generate component messages`
-- `ng generate service message`
-- `ng generate component dashboard`
-- `npm install angular-in-memory-web-api --save`
-- `ng generate service InMemoryData`
-- `ng generate component hero-search`
+- Builds the application
+- Starts the development server
+- Watches the source files
+- Rebuilds the application as you make changes
+- The `--open` flag opens a browser to http://localhost:4200.
 
 ## Learnings
 
-- Always `export` the component class so you can import it elsewhere … like in the `AppModule`. -`*ngFor` to display a list.
-- `*ngIf` to conditionally include or exclude a block of HTML.
+Using the `ng new angular-tour-of-heroes` CLI command this project started. This made a standalone application. But the course is designed for non-standalone applications. Thus there were scenarios in a few steps to be altered.
+
+### Quick learnings
+
+- Always `export` the component class so you can import it elsewhere.
+  - Import is required if you want to use it in `html` using the component selector
+- Angular provides a set of built-in structural directives
+  - `*ngFor` to display a list.
+  - `*ngIf` to conditionally include or exclude a block of HTML.
 - Toggle a CSS style class with a class binding.
+  - `[class.selected]="hero === selectedHero"`
 - Service-in-service scenario: Importing `messages.service` in `hero.service` which is typical scenario in development.
 - Angular only binds to **public** component properties. Properties which are public get bound in the template.
 - `AsyncPipe` - Unwraps a value from an asynchronous primitive. When used with an observable the `subscribe` is handled by `async` pipe.
 
 ### Two-way binding
 
-- `[(ngModel)]` is Angular's two-way binding syntax.
+`[(ngModel)]` is Angular's two-way binding syntax.
 
-  - Although `ngModel` is a valid Angular directive, it isn't available by default. It belongs to the optional `FormsModule` and you must opt in to using it.
+Although `ngModel` is a valid Angular directive, it isn't available by default. It belongs to the optional `FormsModule` and you must opt in to using it.
 
-  > Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires. This information is called _metadata_. Some of the metadata is in the `@Component` decorators that you added to your component classes. Other critical metadata is in `@NgModule` decorators. The most important `@NgModule` decorator annotates the top-level `AppModule` class. `ng new` created an `AppModule` class in `src/app/app.module.ts` when it created the project. This is where you opt in to the `FormsModule`.
+> Angular needs to know how the pieces of your application fit together and what other files and libraries the application requires. This information is called _metadata_. Some of the metadata is in the `@Component` decorators that you added to your component classes. Other critical metadata is in `@NgModule` decorators. The most important `@NgModule` decorator annotates the top-level `AppModule` class. `ng new` created an `AppModule` class in `src/app/app.module.ts` when it created the project. This is where you opt in to the `FormsModule`.
 
-  - The above is not the case for standalone applications. In case of Standalone application import `FormsModule` in the desired component.
+The above is not the case for standalone applications. In case of Standalone application import `FormsModule` in the desired component.
 
-- The `@Input` decorator to make the hero property available for binding by the external components.
+The `@Input` decorator to make the hero property available for binding by the external components.
 
 ### Using pipe
 
@@ -103,20 +96,9 @@ The hero's name is displayed in capital letters.
 
 Reserve the constructor for minimal initialization such as wiring constructor parameters to properties. The constructor shouldn't do anything. It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
 
-### Asynchronous Signature
-
-In real development code base, we will do API integration which will require asynchronous signature.
-
-When we used mock data for `Heroes` we fetched the data from `hero.service` using `this.heroes = this.heroService.getHeroes()` which is a synchronous signature. We need to make the `HeroService.getHeroes()` must have asynchronous signature.
-
-Angular's `HttpClient` method returns observable from RxJS library.
-
-- Observable for fetching data asynchronously
-- Subscribe for passes the emitted data to callback
-
 ### Routing/Navigation
 
-For not standalone applications:
+For non-standalone applications:
 
 - In Angular, the best practice is to load and configure the router in a separate, top-level module. The router is dedicated to routing and imported by the root `AppModule`.
 - By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` directory.
@@ -146,19 +128,32 @@ route: ActivatedRoute = inject(ActivatedRoute);
 const id = Number(this.route.snapshot.params["id"]);
 ```
 
+Use `Location` service from `@angular/common` that applications can use to interact with a browser's URL. (See `hero-detail.component.ts`)
+
 ### Connecting with server
 
-[Angular in-memory-web-api](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api)
+#### Asynchronous Signature
+
+In real development code base, we will do API integration which will require asynchronous signature.
+
+When we used mock data for `Heroes` we fetched the data from `hero.service` using `this.heroes = this.heroService.getHeroes()` which is a synchronous signature. We need to make the `HeroService.getHeroes()` must have asynchronous signature.
+
+Angular's `HttpClient` method returns observable from RxJS library.
+
+- Observable for fetching data asynchronously
+- Subscribe for passes the emitted data to callback
+
+#### Faking API server with [Angular `in-memory-web-api`](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api)
 
 > An in-memory web api for Angular demos and tests that emulates CRUD operations over a RESTy API. It intercepts Angular `Http` and `HttpClient` requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
 
-_The tutorial gives the steps for setting up the `HttpClientInMemoryWebApiModule` for non-standalone applications that is with `NgModules`._
+_The tutorial gives the steps for for non-standalone applications._
 
-Setting up `HttpClientInMemoryWebApiModule` for Angular standalone applications:
+Setting up `in-memory-web-api` for standalone applications:
 
-See `app.config.ts` to bootstrap `HttpClientInMemoryWebApiModule` by `angular-in-memory-web-api` which is a `NgModule` in standalone application.
+See `app.config.ts` to bootstrap `angular-in-memory-web-api` which is a `NgModule`.
 
-`importProvidersFrom` by `@angular/core` collects providers from all `NgModules` and standalone components, including transitively imported ones.
+> `importProvidersFrom` by `@angular/core` collects providers from all `NgModules` and other standalone components, including transitively imported ones.
 
 ```ts
 export const appConfig: ApplicationConfig = {
@@ -182,7 +177,9 @@ In general, an observable can return more than one value over time. An observabl
 
 ## Further Learnings
 
-[RxJS](https://rxjs.dev/guide/overview)
+### [RxJS](https://rxjs.dev/guide/overview)
+
+This has been used heavily in the application.
 
 - RxJS is a library for composing asynchronous and event-based programs by using observable sequences
 - ReactiveX combines the Observer pattern with the Iterator pattern and functional programming with collections to fill the need for an ideal way of managing sequences of events
@@ -190,3 +187,31 @@ In general, an observable can return more than one value over time. An observabl
 - If you neglect to `subscribe()`, the service can't send the delete request to the server. As a rule, an Observable does nothing until something subscribes.
 - A `Subject` is both a source of observable values and an Observable itself. You can subscribe to a `Subject` as you would any `Observable`. You can also push values into that `Observable` by calling its `next(value)` method.
 - `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`. It cancels and discards previous search observables, returning only the latest search service observable.
+
+### Writing Unit Tests
+
+Currently there is no unit test written for this application.
+
+## Other details
+
+### All Angular CLI commands used here
+
+- `ng new angular-tour-of-heroes`
+- `ng generate component heroes`
+- `ng generate interface hero`
+- `ng generate component hero-detail`
+- `ng generate service hero`
+- `ng generate component messages`
+- `ng generate service message`
+- `ng generate component dashboard`
+- `npm install angular-in-memory-web-api --save`
+- `ng generate service InMemoryData`
+- `ng generate component hero-search`
+
+### Other Angular commands
+
+- Code scaffolding: Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Run `ng test` to execute the unit tests via `Karma`.
+- Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

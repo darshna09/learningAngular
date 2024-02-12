@@ -1,8 +1,8 @@
 import { Hero } from '../hero';
 import { FormsModule } from '@angular/forms';
 import { HeroService } from '../hero.service';
-import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
 
 @Component({
