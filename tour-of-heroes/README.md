@@ -58,6 +58,7 @@ ng new angular-tour-of-heroes
 - `ng generate component dashboard`
 - `npm install angular-in-memory-web-api --save`
 - `ng generate service InMemoryData`
+- `ng generate component hero-search`
 
 ## Learnings
 
@@ -66,6 +67,7 @@ ng new angular-tour-of-heroes
 - Toggle a CSS style class with a class binding.
 - Service-in-service scenario: Importing `messages.service` in `hero.service` which is typical scenario in development.
 - Angular only binds to **public** component properties. Properties which are public get bound in the template.
+- `AsyncPipe` - Unwraps a value from an asynchronous primitive. When used with an observable the `subscribe` is handled by `async` pipe.
 
 ### Two-way binding
 
@@ -185,3 +187,6 @@ In general, an observable can return more than one value over time. An observabl
 - RxJS is a library for composing asynchronous and event-based programs by using observable sequences
 - ReactiveX combines the Observer pattern with the Iterator pattern and functional programming with collections to fill the need for an ideal way of managing sequences of events
 - Observable: represents the idea of an invokable collection of future values or events.
+- If you neglect to `subscribe()`, the service can't send the delete request to the server. As a rule, an Observable does nothing until something subscribes.
+- A `Subject` is both a source of observable values and an Observable itself. You can subscribe to a `Subject` as you would any `Observable`. You can also push values into that `Observable` by calling its `next(value)` method.
+- `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`. It cancels and discards previous search observables, returning only the latest search service observable.
