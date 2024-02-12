@@ -1,6 +1,6 @@
-# FindBooks
+# Find Me a Book
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+The project tests the knowledge on angular learned so far... (after creating first-app and tour-of-heroes)
 
 ## Development setup
 
