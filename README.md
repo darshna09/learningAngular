@@ -45,3 +45,7 @@ Learn how to use Standalone Components, Inputs, Angular templates, data binding 
 - Format data with pipes.
 - Create a shared service to assemble the heroes.
 - Use routing to navigate among different views and their components.
+
+## Checking the knowledge
+
+[Find my book](find-books/README.md) application to test the knowledge so far.
