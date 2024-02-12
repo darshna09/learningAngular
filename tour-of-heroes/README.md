@@ -56,6 +56,8 @@ ng new angular-tour-of-heroes
 - `ng generate component messages`
 - `ng generate service message`
 - `ng generate component dashboard`
+- `npm install angular-in-memory-web-api --save`
+- `ng generate service InMemoryData`
 
 ## Learnings
 
@@ -141,6 +143,36 @@ route: ActivatedRoute = inject(ActivatedRoute);
 //...Reading the URL param
 const id = Number(this.route.snapshot.params["id"]);
 ```
+
+### Connecting with server
+
+_The tutorial gives the steps for setting up the `HttpClientInMemoryWebApiModule` for non-standalone applications that is with `NgModules`._
+
+Setting up `HttpClientInMemoryWebApiModule` for Angular standalone applications:
+
+See `app.config.ts` to bootstrap `HttpClientInMemoryWebApiModule` by `angular-in-memory-web-api` which is a `NgModule` in standalone application.
+
+`importProvidersFrom` by `@angular/core` collects providers from all `NgModules` and standalone components, including transitively imported ones.
+
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes), provideHttpClient(), importProvidersFrom([HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)])],
+};
+```
+
+`InMemoryDataService` is the Angular service that implements `InMemoryDbService` by `angular-in-memory-web-api` for mocking the HTTP requests. (See file `in-memory-data.service.ts`).
+
+#### `HttpClient`
+
+[`HttpClient`](https://angular.io/api/common/http/HttpClient) - Performs HTTP requests. This service is available as an injectable class, with methods to perform HTTP requests.
+
+```
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+```
+
+All `HttpClient` methods return an RxJS Observable of something. HTTP is a request/response protocol. You make a request, it returns a **single** response.
+
+In general, an observable can return more than one value over time. An observable from `HttpClient` always emits a single value and then completes, never to emit again.
 
 ## Further Learnings
 
