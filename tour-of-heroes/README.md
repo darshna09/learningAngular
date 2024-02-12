@@ -146,6 +146,10 @@ const id = Number(this.route.snapshot.params["id"]);
 
 ### Connecting with server
 
+[Angular in-memory-web-api](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api)
+
+> An in-memory web api for Angular demos and tests that emulates CRUD operations over a RESTy API. It intercepts Angular `Http` and `HttpClient` requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
+
 _The tutorial gives the steps for setting up the `HttpClientInMemoryWebApiModule` for non-standalone applications that is with `NgModules`._
 
 Setting up `HttpClientInMemoryWebApiModule` for Angular standalone applications:
