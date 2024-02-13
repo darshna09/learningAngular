@@ -12,5 +12,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Setup project `ng new find-books`
 2. Clear `app.component.html`
-3. Setup DB and API CRUD operations using Angular `in-memory-web-api`
-4. Setup book service `ng generate service book`
+3. Setup book interface `ng generate interface book`
+4. Setup DB and API CRUD operations using Angular `in-memory-web-api`
+   a. `npm install angular-in-memory-web-api --save`
+   b. `ng generate service InMemoryDataService`
+5. Enable `httpClient` and `InMemoryDataService` NgModule by including them in `app.config.ts`.
+6. Setup book service
+   a. `ng generate service book`
+   b. Write method to fetch all books.
