@@ -1,0 +1,31 @@
+.books-list {
+  list-style: none;
+}
+
+.book-id {
+  background-color: #747264;
+  border-radius: 7px;
+  color: #eeedeb;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 22px;
+  width: 10px;
+}
+
+.book-name {
+  background-color: #eeedeb;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 7px 22px;
+}
+
+.delete-button {
+  background-color: #9b4444;
+  border-radius: 7px;
+  color: #eeeeee;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px 0 10px;
+  padding: 5px 23px;
+}

@@ -25,3 +25,6 @@ The project tests the knowledge on angular learned so far... (after creating fir
    2. Add logging method in book service
    3. New message component - `ng generate component messages`
    4. Display log messages
+   5. TODO: Add time to each message
+8. Create books list
+   1. New books component - `ng generate component books` to display books list

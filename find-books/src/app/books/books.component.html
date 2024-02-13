@@ -1,0 +1,9 @@
+<h2>All Books</h2>
+<ul>
+    <li *ngFor="let book of books" class="books-list">
+        <span class="book-id">{{book.id}}</span>
+        <button type="button" class="delete-button" (click)="deleteBook(book)">x</button>
+        <span class="book-name">{{book.name}}</span>
+
+    </li>
+</ul>
