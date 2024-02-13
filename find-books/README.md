@@ -23,3 +23,5 @@ The project tests the knowledge on angular learned so far... (after creating fir
 7. Setup message service
    1. `ng generate service message`
    2. Add logging method in book service
+   3. New message component - `ng generate component messages`
+   4. Display log messages

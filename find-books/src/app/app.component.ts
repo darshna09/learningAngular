@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BookService } from './book.service';
+import { MessagesComponent } from './messages/messages.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MessagesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

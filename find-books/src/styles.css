@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+h2 {
+  color: #3c3633;
+  font-family: "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+li {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
