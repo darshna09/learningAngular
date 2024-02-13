@@ -20,3 +20,6 @@ The project tests the knowledge on angular learned so far... (after creating fir
 6. Setup book service
    1. `ng generate service book`
    2. Write method to fetch all books.
+7. Setup message service
+   1. `ng generate service message`
+   2. Add logging method in book service
