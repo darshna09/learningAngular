@@ -12,19 +12,27 @@ import { CommonModule } from '@angular/common';
 })
 export class BooksComponent {
   books: Book[] = [];
+  messageOnEvent: string = '';
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
     this.getBooks();
+    this.clearEventMessages();
   }
 
   getBooks(): void {
     this.bookService.getBooks().subscribe((books) => (this.books = books));
   }
 
+  clearEventMessages(): void {
+    this.messageOnEvent = '';
+  }
+
   deleteBook(book: Book): void {
-    // TODO: implement deleteBook service
-    console.log('deleteBook =>', book);
+    this.bookService.deleteBook(book).subscribe(() => {
+      this.books = this.books.filter((b) => b !== book);
+      this.messageOnEvent = `Successfully deleted "${book.name}"! `;
+    });
   }
 }

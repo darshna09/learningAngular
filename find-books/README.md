@@ -28,3 +28,6 @@ The project tests the knowledge on angular learned so far... (after creating fir
    5. TODO: Add time to each message
 8. Create books list
    1. New books component - `ng generate component books` to display books list
+   2. Delete a book, show message on delete
+   3. TODO: On route: delete old messages
+9. TODO: Search a book component

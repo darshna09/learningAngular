@@ -22,6 +22,13 @@ export class BookService {
     );
   }
 
+  deleteBook(book: Book): Observable<string> {
+    return this.http.delete<string>(`${this.url}/${book.id}`).pipe(
+      tap((_) => this.log(`deleted book id = ${book.id}`)),
+      catchError(this.handleError<string>('deleteBook'))
+    );
+  }
+
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.log(`${operation} failed: ${error.message}`);

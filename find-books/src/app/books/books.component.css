@@ -29,3 +29,14 @@
   margin: 0 5px 0 10px;
   padding: 5px 23px;
 }
+
+.message-event {
+  background: #eeedeb;
+  border: 1px solid #747264;
+  border-radius: 20px;
+  color: #3c3633;
+  font-family: fantasy;
+  margin: 0px 30px;
+  padding: 10px 50px;
+  text-align: center;
+}
