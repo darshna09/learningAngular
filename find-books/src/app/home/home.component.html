@@ -1,3 +1,7 @@
-<div>
-    coming soon - create dashboard
+<div class="home">
+    <h2>Top Books Today</h2>
+
+    <div class="books-menu">
+        <a *ngFor="let book of topBooks" [routerLink]="['/update', book.id]">{{ book.name }}</a>
+    </div>
 </div>

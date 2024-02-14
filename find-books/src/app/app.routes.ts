@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'books', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'books', component: BooksComponent },
   { path: 'update/:id', component: BookDetailComponent },

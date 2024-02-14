@@ -11,9 +11,12 @@
     <hr class="border" />
     <div class="app-container">
         <nav class="navigation">
+            <a [routerLink]="['/home']">Home</a>
             <a [routerLink]="['/books']">Books</a>
             <a [routerLink]="['/messages']">All messages</a>
         </nav>
-        <router-outlet></router-outlet>
+        <div class="route-container">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
