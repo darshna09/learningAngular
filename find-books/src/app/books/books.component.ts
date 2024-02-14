@@ -29,6 +29,16 @@ export class BooksComponent {
     this.messageOnEvent = '';
   }
 
+  add(name: string) {
+    name = name.trim();
+    if (!name) return;
+
+    this.bookService.addBook({ name } as Book).subscribe((book) => {
+      this.books.push(book);
+      this.messageOnEvent = `Successfully added "${book.name}"! `;
+    });
+  }
+
   deleteBook(book: Book): void {
     this.bookService.deleteBook(book).subscribe(() => {
       this.books = this.books.filter((b) => b !== book);

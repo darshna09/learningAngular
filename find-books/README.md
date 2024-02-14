@@ -25,9 +25,16 @@ The project tests the knowledge on angular learned so far... (after creating fir
    2. Add logging method in book service
    3. New message component - `ng generate component messages`
    4. Display log messages
-   5. TODO: Add time to each message
+   5. Add time to each message
 8. Create books list
    1. New books component - `ng generate component books` to display books list
    2. Delete a book, show message on delete
    3. TODO: On route: delete old messages
 9. TODO: Search a book component
+10. Add a book
+11. TODO: Clear input after book is added
+12. TODO: Edit a book
+13. TODO: Submit a book for review
+14. TODO: All reviews/requests page
+15. TODO: Navigation and routing
+16. Profile popup page

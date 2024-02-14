@@ -2,6 +2,12 @@
 <div *ngIf="messageOnEvent" class="message-event">
     <p>{{messageOnEvent}}</p>
 </div>
+<div class="add-book">
+    <label for="new-book" class="add-book-label">Add a new book</label>
+    <input type="text" id="new-book" #bookName class="add-book-input" />
+
+    <button type="button" class="add-book-button" (click)="add(bookName.value); bookName.value">Add</button>
+</div>
 <ul>
     <li *ngFor="let book of books" class="books-list">
         <span class="book-id">{{book.id}}</span>

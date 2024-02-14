@@ -12,7 +12,12 @@ export class MessageService {
   }
 
   pushMessage(message: string): void {
-    this.messages.push(message);
+    const time = this.getTime();
+    this.messages.push(`${time} - ${message}`);
+  }
+
+  getTime(): string {
+    return new Date().toDateString() + ', ' + new Date().toLocaleTimeString();
   }
 
   clearMessages(): void {

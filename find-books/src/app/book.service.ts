@@ -10,6 +10,12 @@ import { MessageService } from './message.service';
 })
 export class BookService {
   private url = 'api/books';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService
@@ -19,6 +25,13 @@ export class BookService {
     return this.http.get<Book[]>(this.url).pipe(
       tap((_) => this.log('fetched books')),
       catchError(this.handleError<Book[]>('getBooks', []))
+    );
+  }
+
+  addBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.url, book, this.httpOptions).pipe(
+      tap((newBook: Book) => this.log(`added book w/ id = ${newBook.id}`)),
+      catchError(this.handleError<Book>('addBook'))
     );
   }
 
