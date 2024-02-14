@@ -5,4 +5,6 @@
         <li *ngFor="let message of messages">{{ message }}</li>
     </ul>
 </div>
+<div *ngIf="messages.length === 0">
+    No messages yet! Move around to add messages</div>
 <hr />

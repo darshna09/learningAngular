@@ -1,6 +1,19 @@
-<p>app works</p>
-<nav>
-    <a [routerLink]="['/books']">Books</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<div>
+    <div class="header">
+        <div class="header-title">
+            <span class="logo">&</span>
+            <span>Find Me a Book</span>
+        </div>
+        <div>
+            <span class="user-profile">O</span>
+        </div>
+    </div>
+    <hr class="border" />
+    <div class="app-container">
+        <nav class="navigation">
+            <a [routerLink]="['/books']">Books</a>
+            <a [routerLink]="['/messages']">All messages</a>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
+</div>

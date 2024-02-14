@@ -1,0 +1,36 @@
+.header {
+  color: #424139;
+  display: flex;
+  font-size: 60px;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.header-title {
+  display: flex;
+  column-gap: 30px;
+}
+
+.logo {
+  color: #f63e00;
+  text-decoration: underline;
+}
+
+.border {
+  border: 3px solid #747264;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.app-container {
+  display: flex;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 10%;
+  font-size: 20px;
+  padding: 10px;
+}
