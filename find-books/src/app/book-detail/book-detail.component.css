@@ -1,0 +1,27 @@
+.update-book {
+  border: 1px solid #747264;
+  margin: 10px;
+  padding: 10px;
+}
+
+.update-book-label {
+  color: #747264;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.add-book-button {
+  background-color: #eeedeb;
+  border-radius: 7px;
+  color: #747264;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: 37px;
+  padding: 5px 22px;
+  width: 100px;
+}
+
+.space-below {
+  margin-bottom: 10px;
+}

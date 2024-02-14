@@ -28,6 +28,13 @@ export class BookService {
     );
   }
 
+  getBook(id: number): Observable<Book> {
+    return this.http.get<Book>(`${this.url}/${id}`).pipe(
+      tap((_) => this.log(`fetched book id = ${id}`)),
+      catchError(this.handleError<Book>(`getBook id = ${id}`))
+    );
+  }
+
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.url, book, this.httpOptions).pipe(
       tap((newBook: Book) => this.log(`added book w/ id = ${newBook.id}`)),

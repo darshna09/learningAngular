@@ -33,8 +33,11 @@ The project tests the knowledge on angular learned so far... (after creating fir
 - TODO: Search a book component
 - Add a book
   - TODO: Clear input after book is added
-- TODO: Edit a book
+- Edit a book
+  - Currently implemented in books component, move to book-detail & refactor code when routing is implemented.
+- Navigation and routing
+  - TODO: Layout
 - TODO: Submit a book for review
 - TODO: All reviews/requests page
-- TODO: Navigation and routing
+
 - Profile popup page

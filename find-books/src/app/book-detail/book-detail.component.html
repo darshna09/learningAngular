@@ -1,1 +1,10 @@
-<p>book-detail works!</p>
+<div *ngIf="messageOnEvent" class="message-event">
+    <p>{{messageOnEvent}}</p>
+</div>
+<div class="update-book" *ngIf="book">
+    <h2>{{ book.name | uppercase }} Details</h2>
+    <div class="space-below"><span class="update-book-label">Book ID: </span>{{ book.id }}</div>
+    <label for="update-book" class="update-book-label">Book name: </label>
+    <input type="text" id="update-book" [(ngModel)]="book.name" class="add-book-input" />
+    <button type="button" class="add-book-button" (click)="save()">Save</button>
+</div>

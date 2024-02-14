@@ -8,3 +8,23 @@ li {
   font-family: "Trebuchet MS", Arial, sans-serif;
   padding: 10px;
 }
+
+input {
+  border-radius: 5px;
+  font-family: monospace;
+  height: 30px;
+  margin: 5px 10px;
+  padding: 0px 10px;
+  width: 500px;
+}
+
+.message-event {
+  background: #eeedeb;
+  border: 1px solid #747264;
+  border-radius: 20px;
+  color: #3c3633;
+  font-family: fantasy;
+  margin: 0px 30px;
+  padding: 10px 50px;
+  text-align: center;
+}
