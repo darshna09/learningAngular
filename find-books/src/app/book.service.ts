@@ -35,6 +35,13 @@ export class BookService {
     );
   }
 
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>(this.url, book, this.httpOptions).pipe(
+      tap((_) => this.log(`updated book id = ${book.id}`)),
+      catchError(this.handleError<any>('updateBook'))
+    );
+  }
+
   deleteBook(book: Book): Observable<string> {
     return this.http.delete<string>(`${this.url}/${book.id}`).pipe(
       tap((_) => this.log(`deleted book id = ${book.id}`)),

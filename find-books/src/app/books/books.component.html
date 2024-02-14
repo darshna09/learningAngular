@@ -12,6 +12,17 @@
     <li *ngFor="let book of books" class="books-list">
         <span class="book-id">{{book.id}}</span>
         <button type="button" class="delete-button" (click)="deleteBook(book)">x</button>
+        <button type="button" class="edit-button" (click)="editBook(book)">/</button>
         <span class="book-name">{{book.name}}</span>
     </li>
 </ul>
+
+<!-- TODO: Move to book detail and update class names -->
+<div class="add-book" *ngIf="book">
+    <h2>{{ book.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{ book.id }}</div>
+    <div><span>name: </span>{{ book.name }}</div>
+    <label for="update-book" class="add-book-label">Book name: </label>
+    <input type="text" id="update-book" [(ngModel)]="book.name" class="add-book-input" />
+    <button type="button" class="add-book-button" (click)="save()">Save</button>
+</div>
