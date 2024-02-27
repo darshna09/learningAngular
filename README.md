@@ -49,3 +49,9 @@ Learn how to use Standalone Components, Inputs, Angular templates, data binding 
 ## Checking the knowledge
 
 [Find my book](find-books/README.md) application to test the knowledge so far.
+
+# Nx
+
+`npx create-nx-workspace@latest my-first-nx`
+
+`npx nx g @nx/angular:component hello-world --directory=src/app/hello-world --standalone`
