@@ -12,9 +12,4 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('@angular-monorepo/products').then((m) => m.ProductsComponent),
   },
-  {
-    path: 'orders',
-    loadComponent: () =>
-      import('@angular-monorepo/orders').then((m) => m.OrdersComponent),
-  },
 ];

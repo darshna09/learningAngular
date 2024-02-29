@@ -15,9 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-monorepo/orders": ["libs/orders/src/index.ts"],
       "@angular-monorepo/products": ["libs/products/src/index.ts"],
-      "@angular-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"]
+      "@angular-monorepo/reactMfe": ["libs/reactMfe/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'angular-monorepo-nx-welcome',
   standalone: true,
   imports: [CommonModule],
-  template: `<p>Welcome to Angular Monorepo!</p>`,
+  template: `<p>NX Welcome</p>`,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })

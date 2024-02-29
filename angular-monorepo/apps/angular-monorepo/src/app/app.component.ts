@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductListComponent } from '@angular-monorepo/products';
+import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
-  imports: [ProductListComponent, RouterModule],
+  imports: [NxWelcomeComponent, RouterModule],
   selector: 'angular-monorepo-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
