@@ -1,0 +1,98 @@
+{
+  "name": "myremote",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "angular-monorepo",
+  "sourceRoot": "apps/angular/myremote/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular/myremote",
+        "index": "apps/angular/myremote/src/index.html",
+        "main": "apps/angular/myremote/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/angular/myremote/tsconfig.app.json",
+        "assets": [
+          "apps/angular/myremote/src/favicon.ico",
+          "apps/angular/myremote/src/assets"
+        ],
+        "styles": ["apps/angular/myremote/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/angular/myremote/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/angular/myremote/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "myremote:build:production"
+        },
+        "development": {
+          "buildTarget": "myremote:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "myremote:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "myremote:build",
+        "port": 4201,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "myremote:build:development"
+        },
+        "production": {
+          "buildTarget": "myremote:build:production"
+        }
+      }
+    }
+  }
+}

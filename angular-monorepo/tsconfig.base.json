@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@angular-monorepo/products": ["libs/products/src/index.ts"],
-      "@angular-monorepo/reactMfe": ["libs/reactMfe/src/index.ts"]
+      "@angular-monorepo/reactMfe": ["libs/reactMfe/src/index.ts"],
+      "myremote/Routes": [
+        "apps/angular/myremote/src/app/remote-entry/entry.routes.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
